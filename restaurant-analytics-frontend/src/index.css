@@ -26,11 +26,19 @@ a:hover {
   color: #535bf2;
 }
 
+/* FIXED: Remove flex centering from body */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding: 0;
+  width: 100%;
   min-width: 320px;
+  min-height: 100vh;
+  /* Removed: display: flex; place-items: center; */
+}
+
+/* Ensure root div takes full width */
+#root {
+  width: 100%;
   min-height: 100vh;
 }
 

@@ -6,6 +6,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import LoadingSpinner from './LoadingSpinner';
 import ChartContainer from './ChartContainer';
 import EmptyState from './EmptyState';
+import Skeleton from './Skeleton';
 
 const API_BASE_URL = 'http://localhost:8000/api/v1';
 
@@ -88,12 +89,27 @@ function RestaurantDetails() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-96">
-        <LoadingSpinner 
-          size="large" 
-          text="Loading restaurant data..." 
-          variant="primary" 
-        />
+      <div className="space-y-8">
+        {/* Header Skeleton */}
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+          <div className="flex items-center space-x-4 mb-6">
+            <Skeleton height="h-16" width="w-16" />
+            <div className="space-y-2">
+              <Skeleton height="h-6" width="w-48" />
+              <Skeleton height="h-4" width="w-32" />
+            </div>
+          </div>
+          <Skeleton type="text" lines={3} height="h-4" />
+        </div>
+
+        {/* Charts Skeleton */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Skeleton type="card" />
+          <Skeleton type="card" />
+        </div>
+
+        {/* Orders Table Skeleton */}
+        <Skeleton type="table" />
       </div>
     );
   }
